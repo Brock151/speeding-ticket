@@ -65,6 +65,8 @@
                     try {
                         const response = await fetch('tickets1.json')
                         this.tickets = await response.json()
+                        this.tickets = this.tickets.filter(ticket => (ticket.actual_speed - ticket.posted_speed) >= 0)
+
                         console.log('Tickets loaded:', this.tickets)
                     } catch (error) {
                         console.error('Error loading tickets:', error)
